@@ -1,5 +1,289 @@
 <!doctype html>
-<html>
-  <head><meta charset="utf-8"><title>Merhaba</title></head>
-  <body><h1>!</h1></body>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Arife Gülşah Erol | Akademik Profil</title>
+  <meta name="description" content="Arife Gülşah Erol — akademik profil, araştırma alanları, projeler ve iletişim." />
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121a33;
+      --text:#e8ecff;
+      --muted:#b7c0ff;
+      --accent:#7aa2ff;
+      --accent2:#9bffd1;
+      --border:rgba(255,255,255,.10);
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius:18px;
+      --maxw: 980px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(122,162,255,.22), transparent 55%),
+        radial-gradient(900px 600px at 90% 15%, rgba(155,255,209,.14), transparent 55%),
+        radial-gradient(900px 700px at 50% 100%, rgba(122,162,255,.12), transparent 60%),
+        var(--bg);
+      line-height:1.55;
+    }
+    a{ color:inherit; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+    .wrap{ max-width: var(--maxw); margin:0 auto; padding: 42px 18px 70px; }
+    header{
+      display:flex; gap:18px; align-items:flex-start; justify-content:space-between; flex-wrap:wrap;
+      margin-bottom: 22px;
+    }
+    .brand{
+      display:flex; gap:14px; align-items:center;
+    }
+    .avatar{
+      width:58px; height:58px; border-radius:14px;
+      background: linear-gradient(135deg, rgba(122,162,255,.95), rgba(155,255,209,.75));
+      box-shadow: var(--shadow);
+      position:relative; overflow:hidden;
+    }
+    .avatar::after{
+      content:"";
+      position:absolute; inset:-20%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), transparent 45%);
+      transform: rotate(15deg);
+      opacity:.8;
+    }
+    .title h1{ margin:0; font-size: 1.55rem; letter-spacing:.2px; }
+    .title .subtitle{ margin-top:4px; color:var(--muted); font-size:.98rem; }
+    nav{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .pill{
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.04);
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size:.92rem;
+      backdrop-filter: blur(8px);
+    }
+    .pill:hover{ background: rgba(255,255,255,.07); text-decoration:none; }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      margin-top: 14px;
+    }
+    @media (max-width: 860px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+    .card{
+      border:1px solid var(--border);
+      background: rgba(18,26,51,.72);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px 18px;
+      backdrop-filter: blur(10px);
+    }
+    .card h2{
+      margin:0 0 10px;
+      font-size: 1.05rem;
+      letter-spacing:.2px;
+    }
+    .muted{ color: var(--muted); }
+    .kicker{
+      font-family: var(--mono);
+      font-size: .86rem;
+      color: rgba(232,236,255,.85);
+      display:inline-block;
+      padding: 6px 10px;
+      border:1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(0,0,0,.15);
+      margin-bottom: 10px;
+    }
+    .btns{
+      display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;
+    }
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size:.95rem;
+    }
+    .btn:hover{ background: rgba(255,255,255,.09); text-decoration:none; }
+    .btn .dot{
+      width:9px; height:9px; border-radius:50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(122,162,255,.16);
+    }
+    .btn.alt .dot{ background: var(--accent2); box-shadow: 0 0 0 4px rgba(155,255,209,.14); }
+    .list{
+      margin: 10px 0 0; padding: 0; list-style:none;
+    }
+    .list li{
+      padding: 10px 0;
+      border-top: 1px dashed rgba(255,255,255,.10);
+    }
+    .list li:first-child{ border-top:0; padding-top:0; }
+    .tagrow{ display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px; }
+    .tag{
+      font-family: var(--mono);
+      font-size: .82rem;
+      border:1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.04);
+      color: rgba(232,236,255,.92);
+    }
+    footer{
+      margin-top: 22px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      color: rgba(232,236,255,.70);
+      font-size: .9rem;
+    }
+    .small{ font-size:.86rem; color: rgba(232,236,255,.68); }
+    .sep{ opacity:.55; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="avatar" aria-hidden="true"></div>
+        <div class="title">
+          <h1>Arife Gülşah Erol</h1>
+          <div class="subtitle">Bilgisayar Mühendisliği (Yüksek Lisans) · SDN / SD-IoT · Saldırı Tespiti (IDS) · LLM’ler</div>
+        </div>
+      </div>
+
+      <nav>
+        <a class="pill" href="#about">Hakkımda</a>
+        <a class="pill" href="#research">Araştırma</a>
+        <a class="pill" href="#publications">Yayınlar</a>
+        <a class="pill" href="#projects">Projeler</a>
+        <a class="pill" href="#contact">İletişim</a>
+      </nav>
+    </header>
+
+    <div class="grid">
+      <section class="card" id="about">
+        <div class="kicker">AKADEMİK PROFİL</div>
+        <h2>Hakkımda</h2>
+        <p>
+          Gazi Üniversitesi Bilgisayar Mühendisliği bölümünde yüksek lisans öğrencisiyim.
+          Çalışmalarım, <b>SDN</b> ve <b>SD-IoT</b> ortamlarında <b>izinsiz giriş tespiti (IDS)</b>,
+          özellikle de <b>görülmemiş/sıfırıncı gün saldırılarının</b> yakalanması ve
+          <b>düşük yanlış alarm oranı (Low-FPR)</b> hedefleri etrafında şekillenmektedir.
+        </p>
+
+        <p class="muted">
+          Bu sayfada araştırma odaklarımı, seçili çalışmalarımı ve iletişim kanallarımı bir araya getiriyorum.
+        </p>
+
+        <div class="btns" id="contact">
+          <a class="btn alt" href="mailto:yourmail@example.com" aria-label="E-posta">
+            <span class="dot"></span> E-posta
+          </a>
+          <a class="btn" href="https://scholar.google.com/" target="_blank" rel="noopener">
+            <span class="dot"></span> Google Scholar
+          </a>
+          <a class="btn" href="https://orcid.org/" target="_blank" rel="noopener">
+            <span class="dot"></span> ORCID
+          </a>
+          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener">
+            <span class="dot"></span> LinkedIn
+          </a>
+          <a class="btn" href="https://github.com/arifegulsah" target="_blank" rel="noopener">
+            <span class="dot"></span> GitHub
+          </a>
+          <a class="btn alt" href="cv.pdf" target="_blank" rel="noopener">
+            <span class="dot"></span> CV (PDF)
+          </a>
+        </div>
+
+        <div class="tagrow" aria-label="Etiketler">
+          <span class="tag">SDN</span>
+          <span class="tag">SD-IoT</span>
+          <span class="tag">IDS</span>
+          <span class="tag">Unseen / Zero-day</span>
+          <span class="tag">Low-FPR</span>
+          <span class="tag">Explainable AI (SHAP)</span>
+          <span class="tag">BERT / T5 / Qwen</span>
+        </div>
+      </section>
+
+      <aside class="card" id="research">
+        <h2>Araştırma Odakları</h2>
+        <ul class="list">
+          <li>
+            <b>LLM tabanlı sınıflandırma</b><br/>
+            <span class="muted">Akış verisinin metinsel temsili, kapalı-küme etiketleme, encoder/decoder mimarileri.</span>
+          </li>
+          <li>
+            <b>Görülmemiş saldırı tespiti</b><br/>
+            <span class="muted">LOAO ve dış test senaryoları ile genelleme analizi.</span>
+          </li>
+          <li>
+            <b>Low-FPR değerlendirme</b><br/>
+            <span class="muted">Hedef FPR (%1/%2/%5) altında eşikleme ve geri çağırım optimizasyonu.</span>
+          </li>
+          <li>
+            <b>Açıklanabilirlik</b><br/>
+            <span class="muted">SHAP ile küresel/ sınıf-bazlı önem analizi, korelasyon incelemeleri.</span>
+          </li>
+        </ul>
+      </aside>
+
+      <section class="card" id="publications">
+        <h2>Yayınlar (Seçili)</h2>
+        <ul class="list">
+          <li>
+            <b>Başlık 1 (yakında)</b><br/>
+            <span class="muted">Konferans/dergi, yıl — kısa açıklama (istersen BibTeX/APA ekleriz).</span>
+          </li>
+          <li>
+            <b>Başlık 2</b><br/>
+            <span class="muted">Konferans/dergi, yıl — kısa açıklama.</span>
+          </li>
+        </ul>
+        <p class="small">Not: İstersen Google Scholar profilinden otomatik liste mantığına benzer bir düzen de kurabiliriz.</p>
+      </section>
+
+      <section class="card" id="projects">
+        <h2>Projeler</h2>
+        <ul class="list">
+          <li>
+            <b>SentineLLM (Tez Çalışması)</b><br/>
+            <span class="muted">SD-IoT ortamında LLM tabanlı saldırı tespiti, düşük yanlış alarm hedefleri ve açıklanabilir karar desteği.</span>
+          </li>
+          <li>
+            <b>Veri Temsili Boru Hattı</b><br/>
+            <span class="muted">Tabular → NLP1/NLP2 metinsel temsiller, yuvarlama/ölçekleme ve senaryo-bazlı bölme stratejileri.</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <footer>
+      <div>© <span id="y"></span> Arife Gülşah Erol</div>
+      <div class="small">
+        GitHub Pages · <span class="sep">|</span> Basit tek dosya tasarım
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
