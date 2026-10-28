@@ -7,6 +7,14 @@ nav: true
 nav_order: 2
 ---
 
+<style>
+h2 { text-transform: capitalize; }
+:root { --global-theme-color: #402599; --global-hover-color: #1C1338; }
+html[data-theme="dark"] { --global-theme-color: #402599; --global-hover-color: #1C1338; }
+a, a:visited { color: var(--global-theme-color); }
+a:hover { color: var(--global-hover-color); }
+</style>
+
 <!-- _pages/publications.md -->
 
 <!-- Bibsearch Feature -->
