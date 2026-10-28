@@ -1,6 +1,6 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
 subtitle: PhD Student in Computer Engineering at <a href="https://mf-bm.gazi.edu.tr/">Gazi University</a>
 
