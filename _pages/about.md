@@ -1,4 +1,8 @@
 ---
+<style>
+h2 { text-transform: capitalize; }
+</style>
+
 layout: about
 title: About
 permalink: /
