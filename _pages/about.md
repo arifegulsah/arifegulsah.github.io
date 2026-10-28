@@ -1,8 +1,4 @@
 ---
-<style>
-h2 { text-transform: capitalize; }
-</style>
-
 layout: about
 title: About
 permalink: /
@@ -23,6 +19,10 @@ announcements:
 latest_posts:
   enabled: false
 ---
+<style>
+h2 { text-transform: capitalize; }
+</style>
+
 
 I am a Ph.D. student in Computer Engineering at Gazi University, researching AI-enabled network security. My Master's thesis focused on large language model-based intrusion detection in Software-Defined IoT networks.
 
