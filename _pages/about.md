@@ -6,19 +6,15 @@ subtitle: PhD Student in Computer Engineering at <a href="https://mf-bm.gazi.edu
 
 profile:
   align: right
-  image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
   more_info: >
     <p>Department of Computer Engineering</p>
     <p>Gazi University, Ankara, Türkiye</p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+selected_papers: false
+social: false
 
 announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  enabled: false
 
 latest_posts:
   enabled: false
