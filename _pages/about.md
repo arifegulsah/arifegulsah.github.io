@@ -8,9 +8,7 @@ profile:
   align: right
   image: prof_pic.jpg
   image_circular: false
-  more_info: >
-    <p>Department of Computer Engineering</p>
-    <p>Gazi University, Ankara, Türkiye</p>
+
 
 selected_papers: false
 social: true
