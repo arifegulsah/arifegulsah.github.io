@@ -6,6 +6,8 @@ subtitle: PhD Student in Computer Engineering at <a href="https://mf-bm.gazi.edu
 
 profile:
   align: right
+  image: prof_pic.jpg
+  image_circular: false
   more_info: >
     <p>Department of Computer Engineering</p>
     <p>Gazi University, Ankara, Türkiye</p>
