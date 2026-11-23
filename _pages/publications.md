@@ -13,6 +13,8 @@ h2 { text-transform: capitalize; }
 html[data-theme="dark"] { --global-theme-color: #402599; --global-hover-color: #1C1338; }
 a, a:visited { color: var(--global-theme-color); }
 a:hover { color: var(--global-hover-color); }
+/* show zoomed images above the fixed navigation bar */
+.medium-zoom-overlay, .medium-zoom-image--opened { z-index: 1100 !important; }
 </style>
 
 <!-- _pages/publications.md -->
