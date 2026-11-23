@@ -7,3 +7,17 @@
 
 "Vision":
   color: "#009f36"
+
+"ISCTürkiye":
+  url: https://iscturkiye.com/
+  color: "#402599"
+
+"ESWA":
+  url: https://www.sciencedirect.com/journal/expert-systems-with-applications
+  color: "#e9711c"
+
+"UBMK":
+  color: "#2a7d6b"
+
+"EuroSPI":
+  color: "#1f5fa8"
