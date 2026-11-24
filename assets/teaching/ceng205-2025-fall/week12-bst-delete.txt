@@ -1,0 +1,104 @@
+struct Node {
+    int data;
+    struct Node *left;
+    struct Node *right;
+};
+#include <stdio.h>
+#include <stdlib.h>
+struct Node* findMin(struct Node* root) {
+    while (root->left != NULL)
+        root = root->left;
+    return root;
+}
+
+struct Node* createNode(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+void inorder(struct Node* root) {
+    if (root == NULL)
+        return;
+
+    inorder(root->left);
+    printf("%d ", root->data);
+    inorder(root->right);
+}
+
+struct Node* deleteBST(struct Node* root, int key) {
+
+    if (root == NULL)
+        return root;
+
+    // 1) Aranıyor
+    if (key < root->data) {
+        root->left = deleteBST(root->left, key);
+    }
+    else if (key > root->data) {
+        root->right = deleteBST(root->right, key);
+    }
+    // 2) Node bulundu
+    else {
+
+        // Case 1 & 2: 0 veya 1 çocuk
+        if (root->left == NULL) {
+            struct Node* temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if (root->right == NULL) {
+            struct Node* temp = root->left;
+            free(root);
+            return temp;
+        }
+
+        // Case 3: 2 çocuk
+        struct Node* temp = findMin(root->right);
+        root->data = temp->data;
+        root->right = deleteBST(root->right, temp->data);
+    }
+
+    return root;
+}
+
+struct Node* insertBST(struct Node* root, int value) {
+
+    // 1) Ağaç boşsa
+    if (root == NULL) {
+        return createNode(value);
+    }
+
+    // 2) Küçükse sola ekle
+    if (value < root->data) {
+        root->left = insertBST(root->left, value);
+    }
+    // 3) Büyükse sağa ekle
+    else if (value > root->data) {
+        root->right = insertBST(root->right, value);
+    }
+    // 4) Eşitse (istersen ekleme)
+    else {
+        // duplicate value, ignore
+        return root;
+    }
+
+    return root;
+}
+
+int main() {
+    struct Node* root = NULL;
+
+    root = insertBST(root, 20);
+    root = insertBST(root, 10);
+    root = insertBST(root, 30);
+    root = insertBST(root, 5);
+    root = insertBST(root, 15);
+    root = insertBST(root, 40);
+
+    root = deleteBST(root, 20);
+
+    inorder(root); // sıralı kalmalı
+}

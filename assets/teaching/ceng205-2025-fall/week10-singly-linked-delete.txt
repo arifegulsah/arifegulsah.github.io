@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+// Pozisyona göre silme, 1. 2. 3. olarak gidiyor
+struct Node* deleteAtPosition(struct Node *HEAD, int pos) {
+
+    // Liste boşsa
+    if (HEAD == NULL) {
+        printf("List is empty.\n");
+        return HEAD;
+    }
+
+    struct Node *temp = HEAD;
+
+    // 1) Baştaki elemanı silme
+    if (pos == 1) {
+        HEAD = HEAD->next;
+        free(temp);
+        return HEAD;
+    }
+
+    // 2) Ortadan ya da sondan silmek için devam ediyoruz
+    struct Node *prev = NULL;
+    int i = 1;
+
+    // temp → silinecek node
+    // prev → temp'in bir öncesi
+    while (temp != NULL && i < pos) {
+        prev = temp;
+        temp = temp->next;
+        i++;
+    }
+
+    // Pozisyon yoksa kontrolü
+    if (temp == NULL) {
+        printf("Position out of bounds.\n");
+        return HEAD;
+    }
+
+    // bağlantıları koparma
+    prev->next = temp->next;
+    free(temp);
+
+    return HEAD;
+}
+
+// Listeyi yazdırma
+void printList(struct Node *HEAD) {
+    struct Node *temp = HEAD;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node *HEAD = NULL;
+
+    // Manuel ekleme yapıyoruz burada
+    struct Node *a = malloc(sizeof(struct Node)); a->data = 10; a->next = NULL;
+    HEAD = a;
+    struct Node *b = malloc(sizeof(struct Node)); b->data = 20; b->next = NULL;
+    a->next = b;
+    struct Node *c = malloc(sizeof(struct Node)); c->data = 30; c->next = NULL;
+    b->next = c;
+
+    // Liste: 10 -> 20 -> 30
+    printList(HEAD);
+
+    HEAD = deleteAtPosition(HEAD, 2); // 20 silinecek
+    printList(HEAD); // 10 -> 30
+
+    HEAD = deleteAtPosition(HEAD, 1); // 10 silinecek
+    printList(HEAD); // 30
+
+    HEAD = deleteAtPosition(HEAD, 5); // out of bounds
+
+    return 0;
+}

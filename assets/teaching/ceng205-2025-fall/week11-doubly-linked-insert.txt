@@ -1,0 +1,85 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+    struct Node *prev;
+};
+
+// Yeni node oluşturma
+struct Node* createNode(int data) {
+    struct Node *new_node = (struct Node*)malloc(sizeof(struct Node));
+    new_node->data = data;
+    new_node->next = NULL;
+    new_node->prev = NULL;
+    return new_node;
+}
+
+// Pozisyona ekleme (1-based)
+struct Node* insertAtPosition(struct Node *HEAD, int pos, int data) {
+    struct Node *new_node = createNode(data);
+
+    // 1) Başa ekleme
+    if (pos == 1) {
+        new_node->next = HEAD;
+        if (HEAD != NULL) {
+            HEAD->prev = new_node;
+        }
+        return new_node;  // yeni HEAD
+    }
+
+    // 2) Ortaya / sona ekleme
+    struct Node *curr = HEAD;
+    int i = 1;
+
+    // curr → pos-1’inci node
+    while (curr != NULL && i < pos - 1) {
+        curr = curr->next;
+        i++;
+    }
+
+    // Pozisyon listede yoksa
+    if (curr == NULL) {
+        printf("Position out of bounds.\n");
+        free(new_node);
+        return HEAD;
+    }
+
+    // 3) DEvam ediyoruz 
+    new_node->next = curr->next; 
+    new_node->prev = curr;
+
+    if (curr->next != NULL) {
+        curr->next->prev = new_node;
+    }
+
+    curr->next = new_node;
+
+    return HEAD;
+}
+
+// Listeyi yazdırma
+void printList(struct Node *HEAD) {
+    struct Node *temp = HEAD;
+    printf("Forward: ");
+    while (temp != NULL) {
+        printf("%d <-> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node *HEAD = NULL;
+
+    HEAD = insertAtPosition(HEAD, 1, 10);  
+    HEAD = insertAtPosition(HEAD, 2, 20);  
+    HEAD = insertAtPosition(HEAD, 3, 30);  
+    HEAD = insertAtPosition(HEAD, 2, 15);  
+    HEAD = insertAtPosition(HEAD, 1, 5);   
+
+    printList(HEAD);
+
+    return 0;
+}

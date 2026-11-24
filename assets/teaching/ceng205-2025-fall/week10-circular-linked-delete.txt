@@ -1,0 +1,81 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+// Pozisyona göre silme
+struct Node* deleteAtPosition(struct Node *HEAD, int pos) {
+
+    // Liste boşsa
+    if (HEAD == NULL) {
+        printf("List is empty.\n");
+        return NULL;
+    }
+
+    struct Node *curr = HEAD;
+    struct Node *prev = NULL;
+
+    // 1) Aradığımız pos eğer en baştakiyse yani HEAD düğümünü silmek istiyorsak
+    if (pos == 1) {
+
+        // Tek eleman durumu
+        if (HEAD->next == HEAD) {
+            free(HEAD);
+            return NULL;
+        }
+
+        // Son düğümü bulalım (tail)
+        struct Node *tail = HEAD;
+        while (tail->next != HEAD) {
+            tail = tail->next;
+        }
+
+        // HEAD'i atla ve tail'i yeni HEAD'e bağla
+        tail->next = HEAD->next;
+
+        struct Node *temp = HEAD;
+        HEAD = HEAD->next;
+        free(temp);
+
+        return HEAD;
+    }
+
+    // 2) Ortadaki veya sondaki düğümü silmek için
+    int i = 1;
+    while (i < pos && curr->next != HEAD) {
+        prev = curr;
+        curr = curr->next;
+        i++;
+    }
+
+    // Pozisyon yoksa
+    if (i != pos) {
+        printf("Position out of bounds.\n");
+        return HEAD;
+    }
+
+    // Bağlantıyı düzelt
+    prev->next = curr->next;
+    free(curr);
+
+    return HEAD;
+}
+
+// circular için ekrana yazdırma
+void printList(struct Node *HEAD) {
+    if (HEAD == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+    struct Node *temp = HEAD;
+
+    do {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    } while (temp != HEAD);
+
+    printf("(HEAD)\n");
+}

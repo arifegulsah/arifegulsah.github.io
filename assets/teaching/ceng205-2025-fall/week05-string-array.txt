@@ -1,0 +1,69 @@
+//push pop - kelime dizi örneği
+
+#include <stdio.h>
+#include <string.h>
+
+#define MAX 20  // Stack kapasitesi önden belirleyelim
+
+char stack[MAX];
+int top = -1;
+
+// PUSH işlemi
+void push(char c) {
+    if (top == MAX - 1) {
+        printf("Stack overflow!\n");
+        return;
+    }
+    stack[++top] = c;
+    printf("PUSH -> '%c' (top = %d)\n", c, top);
+
+    // Stack'in o anki durumu
+    printf("  Stack: ");
+    for (int i = 0; i <= top; i++)
+        printf("%c ", stack[i]);
+    printf("\n\n");
+}
+
+// POP işlemi
+char pop() {
+    if (top == -1) {
+        printf("Stack underflow!\n");
+        return '\0';
+    }
+    char c = stack[top--];
+    printf("POP  -> '%c' (top = %d)\n", c, top);
+
+    // Stack'in o anki durumu
+    printf("  Stack: ");
+    if (top == -1)
+        printf("(bos)\n\n");
+    else {
+        for (int i = 0; i <= top; i++)
+            printf("%c ", stack[i]);
+        printf("\n\n");
+    }
+    return c;
+}
+
+int main() {
+    char kelime[20];
+
+    printf("MAX 10 harfli bir kelime giriniz: ");
+    scanf("%s", kelime);
+
+    int n = strlen(kelime);
+
+    printf("\n--- PUSH Asamalari ---\n");
+    for (int i = 0; i < n; i++) {
+        push(kelime[i]);
+    }
+
+    printf("\n--- POP Asamalari ---\n");
+    printf("Ters hali: ");
+    while (top >= 0) {
+        char c = pop();
+    }
+    printf("\n");
+
+    return 0;
+}
