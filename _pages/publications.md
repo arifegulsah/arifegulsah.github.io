@@ -6,6 +6,7 @@ description: publications by categories in reversed chronological order. generat
 nav: true
 nav_order: 2
 ---
+<link rel="stylesheet" href="{{ '/assets/css/site-custom.css' | relative_url }}">
 
 <style>
 h2 { text-transform: capitalize; }
@@ -16,15 +17,6 @@ a:hover { color: var(--global-hover-color); }
 /* show zoomed images above the fixed navigation bar */
 .medium-zoom-overlay, .medium-zoom-image--opened { z-index: 1100 !important; }
 </style>
-
-<!-- slides are shared on request: buttons that open an email are labeled "Request Slides" -->
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll('.publications a.btn[href^="mailto:"]').forEach(function (a) {
-      if (a.textContent.trim() === "Slides") a.textContent = "Request Slides";
-    });
-  });
-</script>
 
 <!-- _pages/publications.md -->
 

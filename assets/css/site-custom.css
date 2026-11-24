@@ -1,0 +1,53 @@
+/* Site-wide customizations shared by every page (linked from each page's content). */
+
+/* Line spacing: theme default is 1.5, increased by 0.5 */
+body {
+  line-height: 2;
+}
+
+/* Section headings with a short muted subtitle */
+.section-subtitle {
+  margin-top: -0.4rem;
+  margin-bottom: 1rem;
+  color: var(--global-text-color-light);
+}
+
+/* Framed cards for the News and Service sections */
+.section-card {
+  border: 1px solid var(--global-divider-color);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  background-color: var(--global-bg-color);
+}
+.section-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+.section-card ul {
+  padding-left: 1.1rem;
+  margin-bottom: 0;
+}
+.section-card li {
+  margin-bottom: 0.35rem;
+}
+.section-card .issn {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--global-text-color-light);
+  line-height: 1.5;
+}
+.section-card .table {
+  margin-bottom: 0;
+}
+.section-card .table td,
+.section-card .table th {
+  border-top: none;
+}
+.service-cards > [class*="col-"] {
+  display: flex;
+}
+.service-cards .section-card {
+  width: 100%;
+}
