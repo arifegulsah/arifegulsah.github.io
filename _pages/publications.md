@@ -17,6 +17,15 @@ a:hover { color: var(--global-hover-color); }
 .medium-zoom-overlay, .medium-zoom-image--opened { z-index: 1100 !important; }
 </style>
 
+<!-- slides are shared on request: buttons that open an email are labeled "Request Slides" -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('.publications a.btn[href^="mailto:"]').forEach(function (a) {
+      if (a.textContent.trim() === "Slides") a.textContent = "Request Slides";
+    });
+  });
+</script>
+
 <!-- _pages/publications.md -->
 
 <!-- Bibsearch Feature -->
