@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+// Yeni node oluşturma
+struct Node* createNode(int data) {
+    struct Node *new_node = (struct Node*)malloc(sizeof(struct Node));
+    new_node->data = data;
+    new_node->next = NULL;
+    return new_node;
+}
+
+// Belirli pozisyona ekleme, 1. 2. 3. olarak gidiyor
+struct Node* insertAtPosition(struct Node *head, int pos, int data) {
+
+    struct Node *new_node = createNode(data);
+
+    // 1) Listenin başına eklemek için
+    if (pos == 1) {
+        new_node->next = head;
+        return new_node;                // yeni head
+    }
+
+    struct Node *curr = head;
+    int i = 1;
+
+    // curr'ı pos-1'inci node'a ilerletiyoruz
+    while (curr != NULL && i < pos - 1) {
+        curr = curr->next;
+        i++;
+    }
+
+    // Eğer pozisyon listenin dışındaysa
+    if (curr == NULL) {
+        printf("Position out of bounds.\n");
+        free(new_node);
+        return head;
+    }
+
+    // 2) Ortaya veya sona eklemek için
+    new_node->next = curr->next;
+    curr->next = new_node;
+
+    return head;
+}
+
+// Listeyi yazdırma
+void printList(struct Node *head) {
+    struct Node *temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    struct Node *head = NULL;
+
+    head = insertAtPosition(head, 1, 10);  
+    head = insertAtPosition(head, 2, 20);   
+    head = insertAtPosition(head, 3, 30);   
+    head = insertAtPosition(head, 2, 15);   
+    head = insertAtPosition(head, 1, 5);    
+
+    printList(head);
+
+    return 0;
+}

@@ -1,0 +1,72 @@
+// Infix Postfix Dönüştürücü
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>   // isdigit için
+
+#define MAX 100
+
+char stack[MAX]; //sadece operatörleri ve parantezleri geçici olarak tutan yapı
+int top = -1;
+
+void push(char c) {
+    stack[++top] = c;
+}
+
+char pop() {
+    if (top == -1)
+        return 0;
+    return stack[top--];
+}
+
+int precedence(char op) {
+    if (op == '+' || op == '-') return 1;
+    if (op == '*' || op == '/') return 2;
+    return 0;
+}
+void infixToPostfix(char* infix) {
+    char postfix[MAX]; //çıktı yani son postfix ifadesini verecek bize.
+    int j = 0;
+    char c;
+
+    for (int i = 0; (c = infix[i]) != '\0'; i++) { //char dizisinin sonuna kadar gitmek adına
+        if (isdigit(c)) {  // operandsa yani sayıysa direkt yazmasını sağla
+            postfix[j++] = c;
+        }
+        else if (c == '(') {
+            push(c);
+        }
+        else if (c == ')') {
+            while (top != -1 && stack[top] != '(') //( görene kadar hepsini postfixe at
+                postfix[j++] = pop();
+            pop(); // en son '(' çıkar
+        }
+        else if (c == '+' || c == '-' || c == '*' || c == '/') { //hatırlatma: Operatörler stack’e konur ama öncelik sırasına göre davranılır.
+            //Eğer yeni gelen operatörün önceliği ≤ stack’tekinin önceliği → stack’ten pop edilir ve postfix’e eklenir.
+			while (top != -1 && precedence(stack[top]) >= precedence(c))
+                postfix[j++] = pop();
+            push(c);
+        }
+    }
+
+    while (top != -1)
+        postfix[j++] = pop();
+
+    postfix[j] = '\0';
+    printf("Postfix: %s\n", postfix);
+}
+
+int main() {
+    char expr[MAX];
+
+    printf("Infix ifade giriniz: ");
+    scanf("%s", expr);
+
+    infixToPostfix(expr);
+
+    return 0;
+}
+
+
+//3+8/9-2
+//389/+2-

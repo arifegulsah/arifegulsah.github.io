@@ -1,0 +1,41 @@
+
+#include <stdio.h>
+
+// Recursive Binary Search fonksiyonu
+int binarySearchRecursive(int arr[], int left, int right, int target) {
+    if (left > right) {
+        return -1; // bulunamadı
+    }
+
+    int mid = left + (right - left) / 2;
+
+    if (arr[mid] == target) {
+        return mid; // bulundu
+    }
+    else if (arr[mid] > target) {
+        return binarySearchRecursive(arr, left, mid - 1, target); // sol taraf
+    }
+    else {
+        return binarySearchRecursive(arr, mid + 1, right, target); // sağ taraf
+    }
+}
+
+int main() {
+    int arr[] = {2, 5, 8, 12, 16, 23, 38, 56, 72, 91};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int target;
+
+    printf("Aranacak sayiyi girin: ");
+    scanf("%d", &target);
+
+    int result = binarySearchRecursive(arr, 0, n - 1, target);
+
+    if (result != -1)
+        printf("%d sayisi dizide bulundu. Index: %d\n", target, result);
+    else
+        printf("%d sayisi dizide bulunamadi.\n", target);
+
+    return 0;
+}
+
+

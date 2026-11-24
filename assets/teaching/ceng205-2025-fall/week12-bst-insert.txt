@@ -1,0 +1,70 @@
+struct Node {
+    int data;
+    struct Node *left;
+    struct Node *right;
+};
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node* createNode(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+struct Node* insertBST(struct Node* root, int value);
+
+
+struct Node* insertBST(struct Node* root, int value) {
+
+    // 1) Ağaç boşsa
+    if (root == NULL) {
+        return createNode(value);
+    }
+
+    // 2) Küçükse sola ekle
+    if (value < root->data) {
+        root->left = insertBST(root->left, value);
+    }
+    // 3) Büyükse sağa ekle
+    else if (value > root->data) {
+        root->right = insertBST(root->right, value);
+    }
+    // 4) Eşitse (istersen ekleme)
+    else {
+        // duplicate value, ignore
+        return root;
+    }
+
+    return root;
+}
+
+
+void inorder(struct Node* root) {
+    if (root == NULL)
+        return;
+
+    inorder(root->left);
+    printf("%d ", root->data);
+    inorder(root->right);
+}
+
+int main() {
+    struct Node* root = NULL;
+
+    root = insertBST(root, 8);
+    root = insertBST(root, 3);
+    root = insertBST(root, 10);
+    root = insertBST(root, 1);
+    root = insertBST(root, 6);
+    root = insertBST(root, 14);
+
+    printf("Inorder Traversal: ");
+    inorder(root);
+
+    return 0;
+}

@@ -1,0 +1,74 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+// Sentinel HEAD oluşturma
+struct Node* createHead() {
+    struct Node *HEAD = malloc(sizeof(struct Node));
+    HEAD->data = -1;        // dummy
+    HEAD->next = HEAD;      // circular
+    return HEAD;
+}
+
+// 1) İlk düğümü silme (HEAD->next)
+void deleteFirst(struct Node *HEAD) {
+    if (HEAD->next == HEAD) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    struct Node *first = HEAD->next;
+    HEAD->next = first->next;
+    free(first);
+}
+
+// 2) Son düğümü silme
+void deleteLast(struct Node *HEAD) {
+    if (HEAD->next == HEAD) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    struct Node *curr = HEAD->next;
+    struct Node *prev = HEAD;
+
+    while (curr->next != HEAD) {
+        prev = curr;
+        curr = curr->next;
+    }
+
+    prev->next = HEAD;
+    free(curr);
+}
+
+// 3) Pozisyona göre silme 
+void deleteAtPosition(struct Node *HEAD, int pos) {
+    if (HEAD->next == HEAD) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    struct Node *curr = HEAD->next;
+    struct Node *prev = HEAD;
+    int i = 1;
+
+    while (curr != HEAD && i < pos) {
+        prev = curr;
+        curr = curr->next;
+        i++;
+    }
+
+    if (curr == HEAD) {
+        printf("Position out of bounds.\n");
+        return;
+    }
+
+    prev->next = curr->next;
+    free(curr);
+}
+
+
