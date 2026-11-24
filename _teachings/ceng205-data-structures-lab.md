@@ -128,6 +128,8 @@ a:hover { color: var(--global-hover-color); }
 .course table th:nth-child(2), .course table td:nth-child(2) { display: none; }
 </style>
 
+<img src="{{ '/assets/teaching/ceng205-2025-fall/data-structures-banner.png' | relative_url }}" alt="Array, linked list, stack and binary search tree diagrams" class="img-fluid" style="margin: 0.5rem 0 1.5rem 0;">
+
 **Role:** Lab Teaching Assistant
 
 Slides and C code examples I prepared for the weekly lab sessions. Slides are in Turkish and English.
