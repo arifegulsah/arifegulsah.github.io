@@ -6,7 +6,7 @@ description: publications by categories in reversed chronological order. generat
 nav: true
 nav_order: 2
 ---
-<link rel="stylesheet" href="{{ '/assets/css/site-custom.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/site-custom.css' | relative_url | bust_file_cache }}">
 
 <style>
 h2 { text-transform: capitalize; }

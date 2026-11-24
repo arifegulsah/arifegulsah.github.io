@@ -6,7 +6,7 @@ description: Courses I have assisted as a teaching assistant, with the materials
 nav: true
 nav_order: 6
 ---
-<link rel="stylesheet" href="{{ '/assets/css/site-custom.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/site-custom.css' | relative_url | bust_file_cache }}">
 <style>
 h2 { text-transform: capitalize; }
 :root { --global-theme-color: #402599; --global-hover-color: #1C1338; }
