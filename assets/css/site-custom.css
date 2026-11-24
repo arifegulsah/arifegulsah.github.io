@@ -1,8 +1,15 @@
 /* Site-wide customizations shared by every page (linked from each page's content). */
 
-/* Line spacing: theme default is 1.5, increased by 0.5 */
+/* Fonts: Open Sans for text, Lora for headings (loaded via google_fonts in _config.yml) */
 body {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  /* Line spacing: theme default is 1.5, increased by 0.5 */
   line-height: 2;
+}
+h1, h2, h3, h4, h5, h6, .post-title {
+  font-family: "Lora", serif;
+  font-weight: 500;
 }
 
 /* Section headings with a short muted subtitle */
