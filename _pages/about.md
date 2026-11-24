@@ -39,6 +39,7 @@ I am a Ph.D. student in Computer Engineering at Gazi University, researching AI-
 I am always happy to connect on AI, network security, and next-generation networks.
 
 <!-- News (moved here from the layout so the service section can follow it) -->
+<div style="clear: both;"></div>
 <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit">news</a></h2>
 {% include news.liquid limit=true %}
 
