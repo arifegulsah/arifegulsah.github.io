@@ -75,6 +75,10 @@ schedule:
       - name: Slides
         url: /assets/teaching/ceng205-2025-fall/week08-slides.pdf
 
+  - week: 9
+    topic: Stack Exercises and Recursion (continued)
+    description: Continuation of the week 8 topics.
+
   - week: 10
     topic: Singly Linked Lists
     description: Insertion and deletion in singly linked and circular linked lists.
@@ -104,6 +108,10 @@ schedule:
       - name: BST Deletion
         url: /assets/teaching/ceng205-2025-fall/week12-bst-delete.txt
 
+  - week: 13
+    topic: Binary Search Trees (continued)
+    description: Continuation of the week 12 topics.
+
   - week: 14
     topic: Graphs
     description: Graph definitions and representing graphs with adjacency matrices and adjacency lists.
@@ -111,6 +119,14 @@ schedule:
       - name: Slides
         url: /assets/teaching/ceng205-2025-fall/week14-slides.pdf
 ---
+<style>
+:root { --global-theme-color: #402599; --global-hover-color: #1C1338; }
+html[data-theme="dark"] { --global-theme-color: #402599; --global-hover-color: #1C1338; }
+a, a:visited { color: var(--global-theme-color); }
+a:hover { color: var(--global-hover-color); }
+/* no session dates are listed, so hide the empty Date column */
+.course table th:nth-child(2), .course table td:nth-child(2) { display: none; }
+</style>
 
 **Role:** Lab Teaching Assistant
 
